@@ -3,14 +3,23 @@
 // ライブラリ
 import javax.swing.*;
 import java.awt.Container;
+import java.awt.EventQueue;
 import java.awt.BorderLayout;
 
 // メインクラス
 public class Test {
   public static void main(String[] args) {
 	  // ウインドウを生成する
-	  GameWindow gameWindow = new GameWindow("Test", 1280, 720);
 	  
+	  EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					GameWindow gameWindow = new GameWindow("Test", 1280, 720);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 //	  gameWindow.setVisible(true);
     
   }

@@ -11,7 +11,6 @@ public class MazeFrame extends JFrame{
 	
 	public MazeFrame() {
 		panel = new MazePanel();
-//		MazeGame mazeGame = new MazeGame();
 		
 		this.add(panel);
 		
@@ -19,15 +18,16 @@ public class MazeFrame extends JFrame{
 			@Override
 			public void windowClosed(WindowEvent e) {
 				super.windowClosed(e);
-				MazeGame.loop = false;
+				Maze.loop = false;
 			}
 		});
 		
+		// キーボード入力の処理
 		this.addKeyListener(new Keyboard());
 		
 		this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		this.setTitle("Maze");
-		this.setSize(MazeGame.screenWidth, MazeGame.screenWidth);
+		this.setSize(Maze.screenWidth, Maze.screenWidth);
 		this.setLocationRelativeTo(null);
 		this.setResizable(false);
 		this.setVisible(true);

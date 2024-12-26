@@ -9,12 +9,15 @@ public class MazePanel extends JPanel {
 	public MazePanel() {
 		super();
 		// 初期化
-		this.image = new BufferedImage(MazeGame.screenWidth, MazeGame.screenHeight, BufferedImage.TYPE_INT_RGB);
+		this.image = new BufferedImage(Maze.screenWidth, Maze.screenHeight, BufferedImage.TYPE_INT_RGB);
 	}
 	
 	@Override
 	public void paint(Graphics g) {
 		super.paint(g);
+		
+		g.setColor(Color.BLUE);
+		g.fillRect(0, 0, getWidth(), getHeight());
 		g.drawImage(image, 0, 0, this);
 	}
 	
