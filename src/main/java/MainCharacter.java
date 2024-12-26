@@ -15,6 +15,6 @@ public class MainCharacter {
 	
 	void actionPerformed(ActionEvent e) {
 		System.out.println("ActionListener");
-		e.getKeyCode();
+//		e.getKeyCode();
 	}
 }

@@ -45,7 +45,7 @@ public class Maze extends JFrame{
 		
 		MainCanvas canvas = new MainCanvas();
 		// マップを描画
-		canvas.DrawMap(contentPane);
+//		canvas.DrawMap(contentPane);
 		
 		MainCharacter chara = new MainCharacter();
 		// キャラクターを描画
