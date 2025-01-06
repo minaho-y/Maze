@@ -15,9 +15,6 @@ public class MazePanel extends JPanel {
 	@Override
 	public void paint(Graphics g) {
 		super.paint(g);
-		
-		g.setColor(Color.BLUE);
-		g.fillRect(0, 0, getWidth(), getHeight());
 		g.drawImage(image, 0, 0, this);
 	}
 	

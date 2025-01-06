@@ -28,26 +28,26 @@ public class Maze{
 	 */
 	public static void main(String[] args) {
 		
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
 					Maze maze = new Maze();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
 	}
 
 	/**
 	 * Create the frame.
+	 * @wbp.parser.entryPoint
 	 */
 	public Maze() {
 		loop = true;
 		mazeFrame = new MazeFrame();
 		
 		Graphics gra = mazeFrame.panel.image.getGraphics();
-
 		
 		// FPS
 		long startTime;
@@ -55,6 +55,8 @@ public class Maze{
 		int fps = 30;
 		int FPS = 0;
 		int FPSCount = 0;
+		
+		EnumMazeScreen screen = EnumMazeScreen.START;
 		
 		while(loop) {
 			// FPSを計測
@@ -71,11 +73,32 @@ public class Maze{
 			gra.setColor(Color.WHITE);
 			gra.fillRect(0, 0, screenWidth, screenHeight);
 			
-			gra.setColor(Color.BLACK);
-			Font font = new Font("SansSerif", Font.PLAIN, 40);
-			gra.setFont(font);
-			FontMetrics metrics = gra.getFontMetrics(font);
-			gra.drawString("Shooting", 250 - metrics.stringWidth("Shooting") / 2, 80);
+			// 画面遷移
+			switch(screen) {
+			case START:
+				// "Maze"
+				gra.setColor(Color.BLACK);
+				Font font = new Font("SansSerif", Font.PLAIN, 50);
+				gra.setFont(font);
+				FontMetrics metrics = gra.getFontMetrics(font);
+				gra.drawString("Maze", 250 - metrics.stringWidth("Maze") / 2, 80);
+				
+				// "Press SPACE"
+				font = new Font("SansSerif", Font.PLAIN, 20);
+				gra.setFont(font);
+				metrics = gra.getFontMetrics(font);
+				gra.drawString("Press SPACE to Start", 250 - metrics.stringWidth("Press SPACE to Start") / 2, 130);
+				
+				if(Keyboard.isKeyPressed(KeyEvent.VK_SPACE)) {
+					screen = EnumMazeScreen.GAME;
+				}
+				
+				break;
+			case GAME:
+				break;
+			case GAMEOVER:
+				break;
+			}	
 			
 			// FPSを画面に表示
 			gra.setColor(Color.BLACK);
@@ -83,7 +106,7 @@ public class Maze{
 			gra.drawString(FPS + "FPS", 2, 460);
 			
 			// パネルを表示
-			mazeFrame.panel.repaint();
+			mazeFrame.panel.draw();
 			
 			try {
 				long runTime = System.currentTimeMillis() - startTime;
